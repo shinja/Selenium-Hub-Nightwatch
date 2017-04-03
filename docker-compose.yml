@@ -1,0 +1,41 @@
+
+version: '3'
+
+services:
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+  
+  node-chrome:
+    image: selenium/node-chrome
+    depends_on: 
+      - hub
+    links: 
+      - "hub:hub"
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+
+  node-firefox:
+    image: selenium/node-firefox
+    depends_on: 
+      - hub
+    links: 
+      - "hub:hub"
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+
+  nightwatch:
+    image: mickyto/nightwatch
+    depends_on:
+      - hub
+      - node-chrome
+      - node-firefox
+    links: 
+      - "hub:hub"
+    volumes:
+      - "${PWD}/work:/usr/src/app"
+    working_dir: /usr/src/app
+    command: npm start

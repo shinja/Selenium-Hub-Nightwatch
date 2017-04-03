@@ -1,0 +1,15 @@
+{
+  "name": "work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "variables.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "nightwatch -e hub -o report_$(hostname) "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
