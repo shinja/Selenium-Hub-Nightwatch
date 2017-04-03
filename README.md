@@ -1,6 +1,11 @@
 
 Docker Compose of Selenium Hub & Nightwatch. 
 
+## Requirements
+* docker
+* docker-compose
+* node.js
+
 ```bash
 $ npm run compose-start
 
