@@ -6,7 +6,6 @@
   "custom_assertions_path": "",
   "page_objects_path": "",
   "globals_path": "variables.js",
-
   "test_settings": {
     "hub": {
       "selenium_port": 4444,
@@ -22,7 +21,20 @@
         "acceptSslCerts": true
       }
     },
-
+    "standalone": {
+      "selenium_port": 4444,
+      "selenium_host": "standalone-debug",
+      "silent": true,
+      "screenshots": {
+        "enabled": false,
+        "path": ""
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
     "default": {
       "selenium_port": 4444,
       "selenium_host": "127.0.0.1",

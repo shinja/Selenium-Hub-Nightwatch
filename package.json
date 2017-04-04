@@ -12,7 +12,11 @@
     "compose-scale": "docker-compose scale node-chrome=5",
     "compose-nightwatch": "docker-compose scale nightwatch=5",
 
-    "alone:debug": "docker run --name=alone-chrome-debug -d -p 4444:4444 -p 5900:5900 selenium/standalone-chrome-debug || docker start alone-chrome-debug",
+    "alone-start-daemon:debug": "docker run --name=standalone-debug -d -p 4444:4444 -p 5900:5900 selenium/standalone-chrome-debug || docker start alone-chrome-debug",
+    "alone-start:debug": "docker run --rm --name=standalone-debug -p 4444:4444 -p 5900:5900 selenium/standalone-chrome-debug",
+    "alone-stop" : "docker stop standalone-debug",
+    "alone-nightwatch": "docker run --rm --link standalone-debug -v ${PWD}/work:/usr/src/app -w /usr/src/app  mickyto/nightwatch nightwatch -e standalone",
+
     "start_hub": "bash start_hub.sh",
     "stop_hub": "docker stop `docker ps | grep selenium | awk '{print $1}'`",
 
